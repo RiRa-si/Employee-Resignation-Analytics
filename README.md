@@ -58,5 +58,5 @@ The goal is to help HR teams understand workforce turnover and support employee 
 
 ---
 **Created by:** Ritesh  
-**Role:** Aspiring Data Analyst
+
 
