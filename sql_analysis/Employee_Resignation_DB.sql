@@ -1,0 +1,49 @@
+CREATE DATABASE Employee_Resignation_DB;
+
+USE Employee_Resignation_DB;
+
+USE Employee_Resignation_DB;
+
+CREATE TABLE employees (
+    EmployeeID INT PRIMARY KEY,
+    Name VARCHAR(100),
+    Gender VARCHAR(20),
+    Age INT,
+    Department VARCHAR(50),
+    JobRole VARCHAR(100),
+    DateOfJoining DATE,
+    DateOfExit DATE,
+    PerformanceRating INT,
+    ResignationReason VARCHAR(100),
+    LastWorkingLocation VARCHAR(100),
+    Tenure_Years DECIMAL(5,2),
+    AgeGroup VARCHAR(20),
+    ExitYear INT,
+    ExitMonth VARCHAR(20),
+    TenureBand VARCHAR(30)
+);
+
+select count(*) from employees;
+
+#check duplicate employee_id 
+
+SELECT EmployeeID, COUNT(*) AS total_count
+FROM employees
+GROUP BY EmployeeID
+HAVING COUNT(*) > 1;
+
+#check missing values: 
+SELECT
+    SUM(EmployeeID IS NULL) AS missing_employee_id,
+    SUM(Department IS NULL) AS missing_department,
+    SUM(DateOfExit IS NULL) AS missing_exit_date,
+    SUM(ResignationReason IS NULL) AS missing_reason
+FROM employees;
+
+#check date ranges : 
+SELECT
+    MIN(DateOfJoining) AS earliest_joining,
+    MAX(DateOfJoining) AS latest_joining,
+    MIN(DateOfExit) AS earliest_exit,
+    MAX(DateOfExit) AS latest_exit
+FROM employees;
